@@ -1,0 +1,31 @@
+<div class="storelocator-panel">
+
+  <form class="storelocator-filter" [formControl]="searchControl">
+    <div class="location-search">
+      <input
+        type="text"
+        placeholder="Find a store"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="off"
+        autocomplete="off">
+    </div>
+  </form>
+
+  <ul class="store-list">
+    <li *ngFor="let location of locationList, let i = index">
+      <div class="store" (click)="openWindow(location, i)">
+        <div class="title">{{ location.title }}</div>
+        <div class="address">{{location.street}}
+          <br>{{location.city}}, {{location.state}}, {{location.postalcode}}
+        </div>
+        <div class="phone">{{location.phone}}</div>
+        <div class="email">{{location.email}}</div>
+      </div>
+      <div class="detail">
+        <div class="detail-icon"></div>
+      </div>
+    </li>
+  </ul>
+
+</div>
