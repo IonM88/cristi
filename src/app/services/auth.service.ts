@@ -16,18 +16,25 @@ export class AuthService {
   }
 
 
-  login(password) {
-    localStorage.setItem('token','dasdasdasdkaf')
+  login(value: string) {
+    this.isLogin = true
+    this.roleAs = value
+    localStorage.setItem('role', this.roleAs)
     this.router.navigate(['admin'])
   }
 
   logOut() {
-    localStorage.removeItem('role')
     this.router.navigate(['login'])
   }
 
   isLoggedIn() {
-    return localStorage.getItem('token') !== null
+    const loggedIn = localStorage.getItem('state')
+    if (loggedIn === 'true') {
+      this.isLogin = true
+    } else {
+      this.isLogin = false
+      return this.isLogin
+    }
   }
 
   getRole() {
